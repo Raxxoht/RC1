@@ -1,5 +1,7 @@
 package state
 
-func ViewState() {
+import "fmt"
 
+func ViewState() {
+	fmt.Println("Dra til helvete jævel")
 }

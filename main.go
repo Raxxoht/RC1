@@ -1,5 +1,7 @@
 package main
 
-func main() {
+import "main.go/state"
 
+func main() {
+	state.ViewState()
 }
