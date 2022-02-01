@@ -58,7 +58,9 @@ func Takeout(item string) {
 }
 
 func Cross() {
-	if ervest == true {
+	if Contains(båt, "mann") == false {
+		errors.New("Du kan ikke krysse uten at menneske er i båten")
+	} else if ervest == true {
 		ervest = false
 	} else if ervest == false {
 		ervest = true
