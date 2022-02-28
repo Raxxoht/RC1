@@ -5,8 +5,8 @@ import (
 )
 
 func main() {
-	state.ViewState()
 	state.Put("kylling")
+	state.Put("mann")
 	state.Cross()
 	state.Takeout("kylling")
 	state.ViewState()

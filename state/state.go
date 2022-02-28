@@ -14,17 +14,22 @@ var øst []string
 var båt []string
 var index int
 
+//Funksjonen for å se nåværende tilstand til gjenstandene
 func ViewState() {
 	if ervest == true {
-		fmt.Printf("[%q---v/__%q__/_____________ø---%q]", vest, båt, øst)
+		fmt.Printf("[%q---v/__%q__/_____________ø---%q]\n", vest, båt, øst)
 	} else if ervest == false {
-		fmt.Printf("[%q---v__________/__%q__/ø---%q]", vest, båt, øst)
+		fmt.Printf("[%q---v__________/__%q__/ø---%q]\n", vest, båt, øst)
 	}
 }
 
+//Funksjon for å legge ting i båten
 func Put(item string) {
 	if len(båt) > 2 {
-		errors.New("Du kan ikke ha flere enn to ting i båten")
+		err := errors.New("Du kan ikke ha flere enn to ting i båten\n")
+		if err != nil {
+			fmt.Print(err)
+		}
 	} else if Contains(vest, item) && ervest == true {
 		vest = append(vest[:index], vest[index+1:]...)
 		båt = append(båt, item)
@@ -34,6 +39,7 @@ func Put(item string) {
 	}
 }
 
+//En funksjon for å se om en liste inneholder en spesifik gjenstand
 func Contains(l []string, x string) bool {
 	index = 0
 	for _, i := range l {
@@ -45,6 +51,7 @@ func Contains(l []string, x string) bool {
 	return false
 }
 
+//Funksjon for å ta ut ting av båten
 func Takeout(item string) {
 	if Contains(båt, item) {
 		båt = append(båt[:index], båt[index+1:]...)
@@ -57,9 +64,13 @@ func Takeout(item string) {
 	}
 }
 
+// Funksjon for å krysse elva
 func Cross() {
 	if Contains(båt, "mann") == false {
-		errors.New("Du kan ikke krysse uten at menneske er i båten")
+		err := errors.New("Du kan ikke krysse uten at mann er i båten\n")
+		if err != nil {
+			fmt.Print(err)
+		}
 	} else if ervest == true {
 		ervest = false
 	} else if ervest == false {
